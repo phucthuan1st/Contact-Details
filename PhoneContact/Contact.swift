@@ -11,6 +11,7 @@ import Contacts
 class Contacts {
     var contacts = [CNContact]()
 
+    // fetch contact từ hệ thống
     init() {
         let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName)]
         let request = CNContactFetchRequest(keysToFetch: keys)
@@ -19,7 +20,6 @@ class Contacts {
         do {
             try contactStore.enumerateContacts(with: request) {
               (contact, stop) in
-              // Array containing all unified contacts from everywhere
                 self.contacts.append(contact)
             }
         }
@@ -28,6 +28,7 @@ class Contacts {
         }
     }
 
+    // access đến các contacts có trong hệ thống
     public func getSystemContact() -> [CNContact] {
         return contacts
     }

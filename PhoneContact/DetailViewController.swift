@@ -11,9 +11,6 @@ import Contacts
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var contactName: UILabel!
-    @IBOutlet weak var contactNumber: UILabel!
-    @IBOutlet weak var contactEmail: UILabel!
-    @IBOutlet weak var contactOrganization: UILabel!
     
     var contact:CNContact?
 
@@ -24,13 +21,23 @@ class DetailViewController: UIViewController {
     
     func loadContact() {
         contactName.text = contact!.givenName + " " + contact!.familyName
-        
-        let email = contact!.emailAddresses[0].value
-        contactEmail.text = email as String
-        
-        let phone = contact!.phoneNumbers[0].value
-        contactNumber.text = phone.stringValue
-        
+
+        if (contact!.emailAddresses.count != 0) {
+            let email = contact!.emailAddresses[0].value
+            contactEmail.text = email as String
+        }
+        else {
+            contactEmail.text = ""
+        }
+
+        if (contact!.phoneNumbers.count != 0) {
+            let phone = contact!.phoneNumbers[0].value
+            contactNumber.text = phone.stringValue
+        }
+        else {
+            contactNumber.text = ""
+        }
+
         contactOrganization.text = contact!.organizationName
     }
 

@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		518139532852D21300E0ACA8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518139522852D21300E0ACA8 /* DetailViewController.swift */; };
 		518682F82851C50B000EC335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518682F72851C50B000EC335 /* AppDelegate.swift */; };
 		518682FA2851C50B000EC335 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518682F92851C50B000EC335 /* SceneDelegate.swift */; };
-		518682FC2851C50B000EC335 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518682FB2851C50B000EC335 /* ViewController.swift */; };
+		518682FC2851C50B000EC335 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518682FB2851C50B000EC335 /* ListViewController.swift */; };
 		518682FF2851C50B000EC335 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518682FD2851C50B000EC335 /* Main.storyboard */; };
 		518683012851C50E000EC335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518683002851C50E000EC335 /* Assets.xcassets */; };
 		518683042851C50E000EC335 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518683022851C50E000EC335 /* LaunchScreen.storyboard */; };
@@ -37,10 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		518139522852D21300E0ACA8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = PhoneContact/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		518682F42851C50B000EC335 /* PhoneContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518682F72851C50B000EC335 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518682F92851C50B000EC335 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		518682FB2851C50B000EC335 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		518682FB2851C50B000EC335 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = PhoneContact/ListViewController.swift; sourceTree = SOURCE_ROOT; };
 		518682FE2851C50B000EC335 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		518683002851C50E000EC335 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		518683032851C50E000EC335 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,14 +103,14 @@
 		518682F62851C50B000EC335 /* PhoneContact */ = {
 			isa = PBXGroup;
 			children = (
-				518682F72851C50B000EC335 /* AppDelegate.swift */,
-				518682F92851C50B000EC335 /* SceneDelegate.swift */,
-				518682FB2851C50B000EC335 /* ViewController.swift */,
+				518E20AA2852DDE5001ED1CD /* Content */,
+				518E20A82852D955001ED1CD /* DetailView */,
+				518E20A72852D947001ED1CD /* ListView */,
+				518E20A62852D49E001ED1CD /* AppAndScreen */,
 				518682FD2851C50B000EC335 /* Main.storyboard */,
 				518683002851C50E000EC335 /* Assets.xcassets */,
 				518683022851C50E000EC335 /* LaunchScreen.storyboard */,
 				518683052851C50E000EC335 /* Info.plist */,
-				518683272851F270000EC335 /* Contact.swift */,
 			);
 			path = PhoneContact;
 			sourceTree = "<group>";
@@ -128,6 +130,39 @@
 				5186831A2851C50E000EC335 /* PhoneContactUITestsLaunchTests.swift */,
 			);
 			path = PhoneContactUITests;
+			sourceTree = "<group>";
+		};
+		518E20A62852D49E001ED1CD /* AppAndScreen */ = {
+			isa = PBXGroup;
+			children = (
+				518682F92851C50B000EC335 /* SceneDelegate.swift */,
+				518682F72851C50B000EC335 /* AppDelegate.swift */,
+			);
+			path = AppAndScreen;
+			sourceTree = "<group>";
+		};
+		518E20A72852D947001ED1CD /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				518682FB2851C50B000EC335 /* ListViewController.swift */,
+			);
+			name = ListView;
+			sourceTree = "<group>";
+		};
+		518E20A82852D955001ED1CD /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				518139522852D21300E0ACA8 /* DetailViewController.swift */,
+			);
+			name = DetailView;
+			sourceTree = "<group>";
+		};
+		518E20AA2852DDE5001ED1CD /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				518683272851F270000EC335 /* Contact.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +297,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				518683282851F270000EC335 /* Contact.swift in Sources */,
-				518682FC2851C50B000EC335 /* ViewController.swift in Sources */,
+				518682FC2851C50B000EC335 /* ListViewController.swift in Sources */,
+				518139532852D21300E0ACA8 /* DetailViewController.swift in Sources */,
 				518682F82851C50B000EC335 /* AppDelegate.swift in Sources */,
 				518682FA2851C50B000EC335 /* SceneDelegate.swift in Sources */,
 			);

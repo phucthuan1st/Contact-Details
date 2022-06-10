@@ -9,18 +9,16 @@ import Foundation
 import Contacts
 
 class Contacts {
-    var contacts = [CNContact]()
-
     // fetch contact từ hệ thống
     init() {
-        fetchContacts()
     }
-    private func fetchContacts() {
+	func fetchContacts(_ completion: @escaping ([CNContact]) ->()) {
         // 1.
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { (granted, error) in
             if let error = error {
                 print("failed to request access", error)
+				completion([])
                 return
             }
             if granted {
@@ -29,21 +27,20 @@ class Contacts {
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                 do {
                     // 3.
+					var contacts: [CNContact] = []
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
-                        self.contacts.append(contact)
+                        contacts.append(contact)
                     })
+					completion(contacts)
                 } catch let error {
                     print("Failed to enumerate contact", error)
+					completion([])
                 }
             } else {
                 print("access denied")
+				completion([])
             }
         }
-    }
-
-    // access đến các contacts có trong hệ thống
-    public func getSystemContact() -> [CNContact] {
-        return contacts
     }
 }
 

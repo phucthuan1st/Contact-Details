@@ -26,7 +26,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
         
         cell.textLabel?.text = contactList[indexPath.section].givenName + " " + contactList[indexPath.section].familyName
-        cell.detailTextLabel?.text = contactList[indexPath.section].organizationName
         
         return cell
     }
@@ -39,11 +38,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: get data source
     func initContactsList() {
         let contact = Contacts()
-        contactList = contact.getSystemContact()
-        
-        for contact in contactList {
-            print(contact)
-        }
+		contact.fetchContacts { [weak self] data in
+			self?.contactList = data
+			self?.tableView.reloadData()
+		}
     }
     
     // MARK: Button/touching manage

@@ -73,6 +73,9 @@ extension ListViewController : UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.hideKeyboard()
+        
         let selectedContact = contactList[indexPath.section]
         print("Select: \(selectedContact.givenName) \(selectedContact.familyName)")
         
@@ -98,16 +101,32 @@ extension ListViewController : UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         if searchBar.text!.isEmpty {
             contactList = storedContactList
+            self.searchBar.showsCancelButton = false
         }
         else {
+            self.searchBar.setShowsCancelButton(true, animated: true)
             contactList = storedContactList.filter{($0.givenName + " " + $0.familyName).uppercased().contains(searchBar.text!.uppercased())}
         }
         tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.hideKeyboard()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.hideKeyboard()
+        self.searchBar.showsCancelButton = false
+        self.searchBar.text = ""
+        
+        contactList = storedContactList
+        tableView.reloadData()
+    }
+    
+    func hideKeyboard() {
         self.searchBar.endEditing(true)
     }
     

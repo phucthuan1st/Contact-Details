@@ -54,11 +54,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         print(infoField)
     }
     
+    
+    
     // MARK: load UI
     override func viewDidLoad() {
         super.viewDidLoad()
         loadContact()
         loadTable()
     }
+    
+    
 
 }
+
+

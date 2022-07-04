@@ -7,11 +7,27 @@
 import Contacts
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ListViewController: UIViewController {
     
     // properties
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
     var contactList = [CNContact]()
+    var storedContactList = [CNContact]()
+    
+    // MARK: load controller
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initContactsList()
+        initSearchBar()
+        drawTable()
+    }
+    
+}
+
+extension ListViewController : UITableViewDataSource, UITableViewDelegate {
     
     // MARK: config table view ---------------
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,9 +55,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func initContactsList() {
         let contact = Contacts()
 		contact.fetchContacts { [weak self] data in
-			self?.contactList = data
-			self?.tableView.reloadData()
+			self?.storedContactList = data
+            self?.tableView.reloadData()
 		}
+
+        contactList = storedContactList
     }
     
     // MARK: Button/touching manage
@@ -71,11 +89,26 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    // MARK: load controller
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        initContactsList()
-        drawTable()
+}
+
+extension ListViewController : UISearchBarDelegate {
+    //MARK: Search Bar
+    func initSearchBar() {
+        searchBar.delegate = self
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text!.isEmpty {
+            contactList = storedContactList
+        }
+        else {
+            contactList = storedContactList.filter{($0.givenName + " " + $0.familyName).uppercased().contains(searchBar.text!.uppercased())}
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+    
 }

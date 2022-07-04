@@ -108,6 +108,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="X4X-2J-vMG"/>
                     <connections>
+                        <outlet property="searchBar" destination="HYo-aw-mwf" id="q46-me-uHB"/>
                         <outlet property="tableView" destination="QVr-Hv-HwY" id="oCP-ER-f1G"/>
                         <segue destination="Xfw-63-Reu" kind="show" identifier="showContactDetail" id="ysg-m1-kLG"/>
                     </connections>

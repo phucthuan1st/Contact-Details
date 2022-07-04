@@ -28,4 +28,4 @@ Hiển thị một số thông tin của liên hệ, bao gồm:
 
 App gồm 3 controller, 1 navigation và 2 view (ứng với List View và Detail View)
 
-# Thanks for 
+# Thanks for watching
